@@ -68,7 +68,7 @@ lib.callback.register('billing:getMyBills', function(source)
 end)
 
 
-RegisterNetEvent('billing:payBill', function(billId, billAmount , billAccount)
+RegisterNetEvent('billing:payBill', function(billId, billAmount , billAccount , billSociety)
     print(billId)
     local src = source
     local xPlayer = Framework.GetPlayer(src)
@@ -84,7 +84,7 @@ RegisterNetEvent('billing:payBill', function(billId, billAmount , billAccount)
     end
 
     Framework.RemoveMoney(src, billAccount, billAmount, 'bill-payment')
-
+    Framework.PaySociety(billSociety, billAmount)
     exports.oxmysql:execute('DELETE FROM stressy_billing WHERE id = ?',{ billId })
 
     TriggerClientEvent('ox_lib:notify', src, {

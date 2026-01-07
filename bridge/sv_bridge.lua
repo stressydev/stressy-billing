@@ -27,7 +27,9 @@ if Framework.Type == 'qbx' then
         local Player = exports.qbx_core:GetPlayer(cid)
         return Player.PlayerData.job.name
     end
-
+    Framework.PaySociety = function(society,amount)
+        exports['Renewed-Banking']:addAccountMoney(society, amount)
+    end
 elseif Framework.Type == 'qb' then
     QBCore = exports['qb-core']:GetCoreObject()
     Framework.GetPlayer = function(src)
@@ -61,6 +63,9 @@ elseif Framework.Type == 'qb' then
     Framework.GetJob = function(cid)
         local Player = QBCore.Functions.GetPlayer(cid)
         return Player.PlayerData.job.name
+    end
+    Framework.PaySociety = function(society,amount)
+        exports['qb-banking']:AddMoney(society, amount, 'Bill Payment')
     end
 elseif Framework.Type == 'esx' then
     TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
@@ -101,6 +106,9 @@ elseif Framework.Type == 'esx' then
     Framework.GetJob = function(cid)
         local xPlayer = ESX.GetPlayerFromId(cid)
         return xPlayer.getJob()
+    end
+    Framework.PaySociety = function(society,amount)
+        TriggerEvent('esx_society:depositMoney', society, amount)
     end
 end
 

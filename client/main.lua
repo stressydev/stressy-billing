@@ -109,7 +109,7 @@ RegisterCommand('mybills', function()
             args = bill.id,
             onSelect = function(data)
                 print(json.encode(data))
-                TriggerServerEvent('billing:payBill', bill.id , bill.amount , bill.account)
+                TriggerServerEvent('billing:payBill', bill.id , bill.amount , bill.account , bill.job)
             end
         })
     end
