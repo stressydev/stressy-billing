@@ -1,4 +1,4 @@
-### 📄 Stressy Billing
+# 📄 Stressy Billing
 
 A simple, lightweight billing system for FiveM using ox_lib, oxmysql, and a framework bridge supporting QBX, QB-Core, and ESX.
 
@@ -22,21 +22,26 @@ Players with allowed jobs can send bills to others, and players can view and pay
 
 - ⚡ Lightweight and optimized
 
+## Commands
+- /billing - to use billing
+- /mybills - to pay bills
+
 ## 📦 Dependencies
 
-# Required resources:
+### Required resources:
 
 - ox_lib
 
 - oxmysql
 
-# One of the following frameworks:
+### One of the following frameworks:
 
 - qbx_core
 
 - qb-core
 
 - es_extended
+
 
 ## 🛠 Installation
 
