@@ -61,26 +61,6 @@ RegisterCommand('billing', function()
 end)
 
 
--- Choose account type
-function chooseAccount(targetId, amount, description)
-    lib.registerContext({
-        id = 'account_menu',
-        title = 'Choose Account Type',
-        options = {
-            {label = 'Bank', value = 'bank'},
-            {label = 'Cash', value = 'cash'},
-        },
-        onSelect = function(data)
-            lib.callback('billing:addBill', function(success, msg)
-                if not success then
-                    lib.notify({type = 'error', description = msg})
-                end
-            end, targetId, amount, description, data.value)
-        end
-    })
-    lib.showContext('account_menu')
-end
-
 RegisterCommand('mybills', function()
     local bills = lib.callback.await('billing:getMyBills')
     if not bills or #bills == 0 then
